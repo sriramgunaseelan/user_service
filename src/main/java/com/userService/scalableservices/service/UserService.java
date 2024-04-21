@@ -19,7 +19,8 @@ public class UserService {
 	public UserDto insertUser(UserDto userDto) {
 		Users user = new Users();
 		Random rand = new Random();
-		user.setId(rand.nextInt(100));
+		int id = rand.nextInt(100);
+		user.setId(id);
 		user.setAnnualIncome(userDto.getAnnualIncome());
 		user.setFirstName(userDto.getFirstName());
 		user.setLastName(userDto.getLastName());
@@ -28,6 +29,7 @@ public class UserService {
 		user.setAge(userDto.getAge());
 		userRepo.save(user);
 		userDto.setStatus("User inserted successfully!");
+		userDto.setId(id);
 		return userDto;
 	}
 
